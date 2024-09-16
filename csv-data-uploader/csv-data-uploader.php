@@ -27,4 +27,7 @@
 //      return $template;
 //  }
 
+// DB Table on Plugin Activation
+// register_activation_hook(__FILE__, "cdu_create_table");
+
 ?>
