@@ -1,0 +1,1 @@
+/* This js file is for login page */
