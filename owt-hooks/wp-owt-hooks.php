@@ -184,7 +184,61 @@ function owt_attach_assets_to_login_page()
     wp_enqueue_script("owt-js1", plugin_dir_url(__FILE__) . "assets/js/owt-login.js");
 }
 
-add_action("login_enqueue_scripts", "owt_attach_assets_to_login_page");
+// add_action("login_enqueue_scripts", "owt_attach_assets_to_login_page");
 
 
+// action hook - wp_head & wp_footer
+function owt_head_file_css()
+{
+
+    echo '<link rel="stylesheet" href="' . plugin_dir_url(__FILE__) . 'assets/css/header_owt.css" />';
+}
+
+// add_action("wp_head", "owt_head_file_css");
+
+function owt_footer_file_js()
+{
+
+    echo '<script src="' . plugin_dir_url(__FILE__) . 'assets/js/footer_owt.js"></script>';
+}
+
+// add_action("wp_footer", "owt_footer_file_js");
+
+
+// action hook - login_form
+function owt_login_input_form()
+{
+    $txtname = isset($_POST['txtName']) ? $_POST['txtName'] : "";
+    $txtphone = isset($_POST['txtPhone']) ? $_POST['txtPhone'] : "";
+?>
+    <p>
+        <label for="txtName">Name</label>
+        <input type="text" name="txtName" class="input" size="25" value="<?php echo $txtname; ?>" />
+    </p>
+    <p>
+        <label for="textPhone">Phone No</label>
+        <input type="text" name="txtPhone" class="input" size="25" value="<?php echo $txtphone; ?>" />
+    </p>
+<?php
+}
+
+add_action("login_form", "owt_login_input_form");
+
+
+// action hook - login_head  -- this hook is working with the above hook
+function owt_extra_fields_error_messages()
+{
+
+    global $error;
+
+    if (empty($_POST['txtName'])) {
+        $error = "Name should not be empty";
+    }
+
+    if (empty($_POST['txtPhone'])) {
+        $error .= "<br>Phone no. should not be empty";
+    }
+}
+
+add_action("login_head", "owt_extra_fields_error_messages");
 */
