@@ -254,5 +254,12 @@ function owt_fetch_all_login_data()
 // add_action("wp_login", "owt_fetch_all_login_data");
 
 
+// filter hooks - the_title
+function owt_filter_title($title)
+{
 
+    return "owt-updated-" . $title;
+}
+
+// add_filter("the_title", "owt_filter_title");
 */
