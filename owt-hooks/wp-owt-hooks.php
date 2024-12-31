@@ -262,4 +262,14 @@ function owt_filter_title($title)
 }
 
 // add_filter("the_title", "owt_filter_title");
+
+
+// filter hook - the_content
+function owt_filter_content($content)
+{
+
+    return "The content is - " . $content . " here it ends.";
+}
+
+add_filter("the_content", "owt_filter_content");
 */
