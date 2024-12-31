@@ -241,4 +241,18 @@ function owt_extra_fields_error_messages()
 }
 
 add_action("login_head", "owt_extra_fields_error_messages");
+
+
+// action hook - wp_login -- this hook also works with the above 2 hooks
+function owt_fetch_all_login_data()
+{
+
+    print_r($_REQUEST);
+    die;
+}
+
+// add_action("wp_login", "owt_fetch_all_login_data");
+
+
+
 */
