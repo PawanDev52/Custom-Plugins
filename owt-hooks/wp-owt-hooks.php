@@ -290,4 +290,15 @@ function owt_update_login_logo_title()
 
 // add_filter("login_headertitle", "owt_update_login_logo_title");
 
+
+function owt_update_login_url($login_url, $redirect)
+{
+
+    return home_url("/custom-login-page/?redirect_to=" . $redirect);
+}
+
+// add_filter("login_url", "owt_update_login_url", 10, 2);
+
+// echo wp_login_url(); // used to return the wp login page url
+
 */
