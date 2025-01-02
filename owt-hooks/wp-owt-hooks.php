@@ -274,7 +274,13 @@ function owt_filter_content($content)
 add_filter("the_content", "owt_filter_content");
 
 
-// filter hook - login_headurl
+// filter hook - login_headerurl, login_headertitle, login_url
+function owt_update_login_logo_url($url)
+{
+    return "https://www.google.com";
+}
+
+// add_filter("login_headerurl", "owt_update_login_logo_url");
 
 
 */
