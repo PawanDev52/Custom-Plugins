@@ -283,4 +283,11 @@ function owt_update_login_logo_url($url)
 // add_filter("login_headerurl", "owt_update_login_logo_url");
 
 
+function owt_update_login_logo_title()
+{
+    return "Master Custom Themes";
+}
+
+// add_filter("login_headertitle", "owt_update_login_logo_title");
+
 */
