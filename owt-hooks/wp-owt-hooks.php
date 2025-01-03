@@ -345,4 +345,22 @@ function codex_custom_init()
 add_action('init', 'codex_custom_init');
 // in the above action hook we have created a custom post type
 
+function owt_add_custom_clmns_book($columns)
+{
+
+    // add custom columns to book custom post type
+
+    $columns = array(
+        "cb" => "<input type='checkbox'>",
+        "title" => "Book Title",
+        "author" => "Book author",
+        "amount" => "Book amount",
+        "date" => "Created date"
+    );
+
+    return $columns;
+}
+// syntax - add_filter("manage_{post_type}_posts_columns", "callback");
+add_filter("manage_book_posts_columns", "owt_add_custom_clmns_book");
+
 */
