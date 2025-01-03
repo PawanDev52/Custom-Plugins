@@ -332,4 +332,17 @@ function owt_get_links()
 // add_action("init", "owt_get_links");
 
 
+// filter hook - manage_{post_type}_posts_columns
+function codex_custom_init()
+{
+    $args = array(
+        'public' => true,
+        'label' => 'Books'
+    );
+    register_post_type('book', $args);
+}
+
+add_action('init', 'codex_custom_init');
+// in the above action hook we have created a custom post type
+
 */
