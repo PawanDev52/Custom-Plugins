@@ -301,4 +301,21 @@ function owt_update_login_url($login_url, $redirect)
 
 // echo wp_login_url(); // used to return the wp login page url
 
+
+// filter hook - logout_url & lostpassword_url
+function owt_update_logout_url($logout_url, $redirect)
+{
+    return home_url("/custom-logout-page/?redirect_to=" . $redirect);
+}
+
+// add_filter("logout_url", "owt_update_logout_url", 10, 2);
+
+function owt_update_lost_url($lostpassword_url, $redirect)
+{
+
+    return home_url("/custom-lostpassword_url/?redirect_to=" . $redirect);
+}
+
+// add_filter("lostpassword_url", "owt_update_lost_url", 10, 2);
+
 */
