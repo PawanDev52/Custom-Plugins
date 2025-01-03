@@ -318,4 +318,18 @@ function owt_update_lost_url($lostpassword_url, $redirect)
 
 // add_filter("lostpassword_url", "owt_update_lost_url", 10, 2);
 
+function owt_get_links()
+{
+
+    echo '<a href="' . wp_logout_url(get_permalink()) . '">Logout URL</a>';
+    echo "<br>";
+    echo '<a href="' . wp_lostpassword_url() . '">Lost Password URL</a>';
+}
+// wp_lostpassword_url() this function is used to return the lost password url
+// wp_logout_url this function is used to return the logout url
+
+// this action hook is also working with the above 2 filter hooks 
+// add_action("init", "owt_get_links");
+
+
 */
