@@ -9,6 +9,12 @@
 
  /*
 
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+define("OWT_HOOK_PLUGIN_BASENAME", plugin_basename(__FILE__));
+
+
 function owt_wp_init()
 {
 
@@ -222,7 +228,7 @@ function owt_login_input_form()
 <?php
 }
 
-add_action("login_form", "owt_login_input_form");
+// add_action("login_form", "owt_login_input_form");
 
 
 // action hook - login_head  -- this hook is working with the above hook
@@ -240,7 +246,7 @@ function owt_extra_fields_error_messages()
     }
 }
 
-add_action("login_head", "owt_extra_fields_error_messages");
+// add_action("login_head", "owt_extra_fields_error_messages");
 
 
 // action hook - wp_login -- this hook also works with the above 2 hooks
@@ -271,7 +277,7 @@ function owt_filter_content($content)
     return "The content is - " . $content . " here it ends.";
 }
 
-add_filter("the_content", "owt_filter_content");
+// add_filter("the_content", "owt_filter_content");
 
 
 // filter hook - login_headerurl, login_headertitle, login_url
@@ -342,7 +348,7 @@ function codex_custom_init()
     register_post_type('book', $args);
 }
 
-add_action('init', 'codex_custom_init');
+// add_action('init', 'codex_custom_init');
 // in the above action hook we have created a custom post type
 
 function owt_add_custom_clmns_book($columns)
@@ -355,12 +361,88 @@ function owt_add_custom_clmns_book($columns)
         "title" => "Book Title",
         "author" => "Book author",
         "amount" => "Book amount",
+        "book_email" => "Book email",
         "date" => "Created date"
     );
 
     return $columns;
 }
 // syntax - add_filter("manage_{post_type}_posts_columns", "callback");
-add_filter("manage_book_posts_columns", "owt_add_custom_clmns_book");
+// add_filter("manage_book_posts_columns", "owt_add_custom_clmns_book");
+
+// action hook - manage_{post_type}_posts_custom_column
+function owt_cpt_book_data($column_name, $post_id)
+{
+
+    // supply data for custom post type book
+    switch ($column_name) {
+            // case 'cb':
+            //     echo '<input type="checkbox" name="book_row[]" />';
+            //     break;
+            // case 'title':
+            //     echo 'Sample Title';
+            //     break;
+            // case 'author':
+            //     echo 'Master Custom';
+            //     break;
+        case 'amount':
+            echo 40;
+            break;
+        case 'book_email':
+            echo 'example@gmail.com';
+            break;
+            // case 'date':
+            //     echo date("Y-m-d");
+            //     break;
+
+            // i have commented few cases because wordpress provide by default from few of them
+    }
+}
+// this action hook is working with the above filter hook
+// syntax - add_action("manage_{post_type}_posts_custom_column", "callback", priority, arguments);
+// add_action("manage_book_posts_custom_column", "owt_cpt_book_data", 10, 2);
+
+
+// filter hook - plugin_action_links
+function owt_add_other_plugin_links($links)
+{
+
+    // $list_table_plugin_url = admin_url("options-writing.php#classic-editor-options"); // i have added my own url here
+
+    // $first_link = '<a href="' . $list_table_plugin_url . '">List Table Plugin</a>';
+
+    $settings_link = admin_url("options-general.php?page=hook-settings-panel");
+
+    $settings_anchor = '<a href="' . $settings_link . '">Settings</a>';
+
+    array_push($links, $settings_anchor);
+
+    // array_push($links, $first_link);
+
+    return $links;
+}
+
+add_filter("plugin_action_links_" . OWT_HOOK_PLUGIN_BASENAME, "owt_add_other_plugin_links");
+
+function owt_register_settings_panel()
+{
+
+    add_submenu_page(
+        "options-general.php",
+        "Hook Settings",
+        "Hook Settings",
+        "manage_options",
+        "hook-settings-panel",
+        "owt_hook_settings_panel_fn"
+    );
+}
+// adding sub menu in the settings
+add_action("admin_menu", "owt_register_settings_panel");
+
+function owt_hook_settings_panel_fn()
+{
+    echo "<h1>This is settings page of OWT hook plugin</h1>";
+}
+
 
 */
