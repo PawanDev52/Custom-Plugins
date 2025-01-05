@@ -403,7 +403,7 @@ function owt_cpt_book_data($column_name, $post_id)
 // add_action("manage_book_posts_custom_column", "owt_cpt_book_data", 10, 2);
 
 
-// filter hook - plugin_action_links
+// filter hook - "plugin_action_links_" . plugin_basename(__FILE__)
 function owt_add_other_plugin_links($links)
 {
 
@@ -422,7 +422,7 @@ function owt_add_other_plugin_links($links)
     return $links;
 }
 
-add_filter("plugin_action_links_" . OWT_HOOK_PLUGIN_BASENAME, "owt_add_other_plugin_links");
+// add_filter("plugin_action_links_" . OWT_HOOK_PLUGIN_BASENAME, "owt_add_other_plugin_links");
 
 function owt_register_settings_panel()
 {
@@ -437,12 +437,35 @@ function owt_register_settings_panel()
     );
 }
 // adding sub menu in the settings
-add_action("admin_menu", "owt_register_settings_panel");
+// add_action("admin_menu", "owt_register_settings_panel");
 
 function owt_hook_settings_panel_fn()
 {
     echo "<h1>This is settings page of OWT hook plugin</h1>";
 }
 
+
+// filter hook - template_include
+function owt_include_portfolio_page($template)
+{
+
+    if (is_page("portfolio")) {
+        $new_template = locate_template(array("portfolio-page-template.php"));
+
+        if (!empty($new_template)) {
+            return $new_template;
+        }
+    }
+
+    if (is_page("services")) {
+        $new_template = locate_template(array("service-page-template.php"));
+
+        if (!empty($new_template)) {
+            return $new_template;
+        }
+    }
+}
+
+// add_filter("template_include", "owt_include_portfolio_page", 99);
 
 */
