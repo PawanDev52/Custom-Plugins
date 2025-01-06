@@ -466,6 +466,7 @@ function owt_include_portfolio_page($template)
     }
 }
 
+// it works with locate_template()
 // add_filter("template_include", "owt_include_portfolio_page", 99);
 
 */
