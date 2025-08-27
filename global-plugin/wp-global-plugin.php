@@ -6,6 +6,7 @@
  * Description: This is a custom plugin for global variables
  */
 
+// commenting all code
 
 // function wp_global_attach_menu()
 // {
