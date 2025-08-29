@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Plugin Name: Hello World
  * Description: This is our first plugin.
@@ -7,6 +8,8 @@
  * Author URI: https://example.com
  * Plugin URI: https://example.com/hello-world
  */
+
+// commenting all code
 
 //  Admin Dashboard Notices
 // i am commenting this entire code because i am pushing it on github so when clonning it uncomment the code.
