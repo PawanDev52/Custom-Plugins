@@ -7,6 +7,8 @@
  * Author URI: https://github.com/PawanDev52
  */
 
+// commenting all code as pushing it on github
+
  /*
 
 error_reporting(E_ALL);
