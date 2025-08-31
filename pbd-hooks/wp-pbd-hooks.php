@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Plugin Name: OWT WP HOOKS
+ * Plugin Name: PBD WP HOOKS
  * Description: This plugin is for demonstration of WP Hooks
  * Author: Pawan Sharma
  * Author URI: https://github.com/PawanDev52
@@ -9,33 +9,37 @@
 
 // commenting all code as pushing it on github
 
- /*
-
+/*
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
 define("OWT_HOOK_PLUGIN_BASENAME", plugin_basename(__FILE__));
 
 
-function owt_wp_init()
+// 1. action hook - init
+function pbd_wp_init()
 {
-
     $args = array(
         'public' => true,
-        'label' => 'OWT Hooks'
+        'label' => 'PBD Hooks'
     );
-    register_post_type('owt_hook', $args);
+    register_post_type('pbd_hook', $args);
 }
 
-//  add_action("init", "owt_wp_init");
+// add_action("init", "pbd_wp_init");
+
+// with the above function and action we are registering a custom post type
+// init fired a function when wordpress initialize
 
 
-// action hook - widgets_init
-function owt_register_sidebar()
-{
+// 2. action hook - widgets_init
+// widgets_init hook is used to register widgets
+// we are using this sidebar in the footer so check the code in the footer.php file also before uncommenting this action hook
+
+function pbd_register_sidebar(){
     register_sidebar(array(
-        'name' => __('OWT sidebar'),
-        'id' => 'owt-sidebar-1',
+        'name' => __('PBD sidebar'),
+        'id' => 'pbd-sidebar-1',
         'description' => __('This is trial for widgets_init action hook'),
         'before_widget' => '<li id="%1$s" class="widget %2$s">',
         'after_widget' => '</li>',
@@ -43,8 +47,8 @@ function owt_register_sidebar()
         'after_title' => '</h2>'
     ));
 }
-// we are using this sidebar in the footer so check the code in the footer.php file also before uncommenting this action hook
-// add_action("widgets_init", "owt_register_sidebar");
+
+// add_action("widgets_init", "pbd_register_sidebar");
 
 
 // action hook = admin_menu
