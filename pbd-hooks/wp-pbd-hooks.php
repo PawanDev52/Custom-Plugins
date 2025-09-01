@@ -51,7 +51,7 @@ function pbd_register_sidebar(){
 // add_action("widgets_init", "pbd_register_sidebar");
 
 
-// action hook = admin_menu
+// 3. action hook = admin_menu
 function owt_custom_menu()
 {
     add_menu_page("OWT Playlist", "OWT playlist", "manage_options", "owt-playlist", "owt_plylist_fn");
