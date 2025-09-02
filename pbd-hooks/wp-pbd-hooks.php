@@ -81,6 +81,7 @@ function owt_attach_assets_to_admin()
 
 // add_action("admin_enqueue_scripts", "owt_attach_assets_to_admin");
 
+
 function owt_attach_assets_to_front()
 {
     // functions for adding css and js files
@@ -476,3 +477,4 @@ function owt_include_portfolio_page($template)
 // add_filter("template_include", "owt_include_portfolio_page", 99);
 
 */
+?>
