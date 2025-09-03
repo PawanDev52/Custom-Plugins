@@ -52,7 +52,7 @@ function pbd_register_sidebar(){
 
 
 // 3. action hook = admin_menu
-function owt_custom_menu()
+function pbd_custom_menu()
 {
     add_menu_page("OWT Playlist", "OWT playlist", "manage_options", "owt-playlist", "owt_plylist_fn");
     add_submenu_page("owt-playlist", "Submenu 1", "Submenu 1", "manage_options", "submenu-1", "owt_submenu_1_fn");
