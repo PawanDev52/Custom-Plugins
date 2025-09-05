@@ -55,10 +55,10 @@ function pbd_register_sidebar(){
 function pbd_custom_menu()
 {
     add_menu_page("PBD Playlist", "PBD playlist", "manage_options", "pbd-playlist", "pbd_plylist_fn");
-    add_submenu_page("owt-playlist", "Submenu 1", "Submenu 1", "manage_options", "submenu-1", "owt_submenu_1_fn");
+    add_submenu_page("pbd-playlist", "Submenu 1", "Submenu 1", "manage_options", "submenu-1", "pbd_submenu_1_fn");
 }
 
-function owt_plylist_fn()
+function pbd_plylist_fn()
 {
     echo "This is our admin menu page";
 }
