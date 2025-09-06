@@ -63,15 +63,15 @@ function pbd_plylist_fn()
     echo "This is our admin menu page";
 }
 
-function owt_submenu_1_fn()
+function pbd_submenu_1_fn()
 {
     echo "This is our first submenu page";
 }
 
-// add_action("admin_menu", "owt_custom_menu");
+// add_action("admin_menu", "pbd_custom_menu");
 
 
-// action hook - admin_enqueue_scripts & wp_enqueue_scripts
+// 4. action hook - admin_enqueue_scripts & wp_enqueue_scripts
 function owt_attach_assets_to_admin()
 {
     // functions for adding css and js files
