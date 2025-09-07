@@ -72,7 +72,7 @@ function pbd_submenu_1_fn()
 
 
 // 4. action hook - admin_enqueue_scripts & wp_enqueue_scripts
-function owt_attach_assets_to_admin()
+function pbd_attach_assets_to_admin()
 {
     // functions for adding css and js files
     wp_enqueue_style("owt-css", plugin_dir_url(__FILE__) . "assets/css/owt-admin.css");
