@@ -52,6 +52,7 @@ function pbd_register_sidebar(){
 
 
 // 3. action hook = admin_menu
+// with this action hook we can create admin menu page and sub menu pages which we can see in the dashboard panel
 function pbd_custom_menu()
 {
     add_menu_page("PBD Playlist", "PBD playlist", "manage_options", "pbd-playlist", "pbd_plylist_fn");
