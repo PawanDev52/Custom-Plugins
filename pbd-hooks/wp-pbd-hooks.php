@@ -73,14 +73,15 @@ function pbd_submenu_1_fn()
 
 
 // 4. action hook - admin_enqueue_scripts & wp_enqueue_scripts
+// used for
 function pbd_attach_assets_to_admin()
 {
     // functions for adding css and js files
-    wp_enqueue_style("owt-css", plugin_dir_url(__FILE__) . "assets/css/owt-admin.css");
-    wp_enqueue_script("owt-js", plugin_dir_url(__FILE__) . "assets/js/owt-admin.js");
+    wp_enqueue_style("pbd-css", plugin_dir_url(__FILE__) . "assets/css/owt-admin.css");
+    wp_enqueue_script("pbd-js", plugin_dir_url(__FILE__) . "assets/js/owt-admin.js");
 }
 
-// add_action("admin_enqueue_scripts", "owt_attach_assets_to_admin");
+// add_action("admin_enqueue_scripts", "pbd_attach_assets_to_admin");
 
 
 function owt_attach_assets_to_front()
