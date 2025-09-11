@@ -73,7 +73,8 @@ function pbd_submenu_1_fn()
 
 
 // 4. action hook - admin_enqueue_scripts & wp_enqueue_scripts
-// this action hook is used for
+// admin_enqueue_scripts - this action hook is used for adding css and js files at the admin section
+// wp_enqueue_scripts
 
 function pbd_attach_assets_to_admin()
 {
