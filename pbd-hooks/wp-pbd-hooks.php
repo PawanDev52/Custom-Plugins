@@ -74,29 +74,29 @@ function pbd_submenu_1_fn()
 
 // 4. action hook - admin_enqueue_scripts & wp_enqueue_scripts
 // admin_enqueue_scripts - this action hook is used for adding css and js files at the admin section
-// wp_enqueue_scripts
+// wp_enqueue_scripts - this action hook is used for adding css and js files to the front end view
 
-function pbd_attach_assets_to_admin()
-{
-    // functions for adding css and js files
-    wp_enqueue_style("pbd-css", plugin_dir_url(__FILE__) . "assets/css/owt-admin.css");
-    wp_enqueue_script("pbd-js", plugin_dir_url(__FILE__) . "assets/js/owt-admin.js");
-}
+// function pbd_attach_assets_to_admin()
+// {
+//     // functions for adding css and js files
+//     wp_enqueue_style("pbd-css", plugin_dir_url(__FILE__) . "assets/css/pbd-admin.css");
+//     wp_enqueue_script("pbd-js", plugin_dir_url(__FILE__) . "assets/js/pbd-admin.js");
+// }
 
 // add_action("admin_enqueue_scripts", "pbd_attach_assets_to_admin");
 
+// for adding css and js files to the front end view
+// function pbd_attach_assets_to_front()
+// {
+//     // functions for adding css and js files
+//     wp_enqueue_style("pbd-css", plugin_dir_url(__FILE__) . "assets/css/pbd-front.css");
+//     wp_enqueue_script("pbd-js", plugin_dir_url(__FILE__) . "assets/js/pbd-front.js");
+// }
 
-function pbd_attach_assets_to_front()
-{
-    // functions for adding css and js files
-    wp_enqueue_style("owt-css", plugin_dir_url(__FILE__) . "assets/css/owt-front.css");
-    wp_enqueue_script("owt-js", plugin_dir_url(__FILE__) . "assets/js/owt-front.js");
-}
-
-// add_action("wp_enqueue_scripts", "owt_attach_assets_to_front");
+// add_action("wp_enqueue_scripts", "pbd_attach_assets_to_front");
 
 
-// action hook - admin_bar_menu
+// 5. action hook - admin_bar_menu
 function owt_custom_bar_menu($wp_admin_bar)
 {
     // for adding menu and sub menu in the dashboard admin bar
