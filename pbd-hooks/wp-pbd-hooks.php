@@ -97,15 +97,15 @@ function pbd_submenu_1_fn()
 
 
 // 5. action hook - admin_bar_menu
-function owt_custom_bar_menu($wp_admin_bar)
+// this action hook is used for adding menu and sub menu in the top of dashboard admin bar
+function pbd_custom_bar_menu($wp_admin_bar)
 {
-    // for adding menu and sub menu in the dashboard admin bar
     $args = array(
-        "id" => "owt-blog",
+        "id" => "pbd-blog",
         "title" => "Custom bar menu",
         "href" => "https://github.com/PawanDev52",
         "meta" => array(
-            "class" => "owt-custom-blog",
+            "class" => "pbd-custom-blog",
             "target" => "_blank"
         )
     );
@@ -113,19 +113,19 @@ function owt_custom_bar_menu($wp_admin_bar)
     $wp_admin_bar->add_node($args);
 
     $submenu1 = array(
-        "id" => "owt-submenu1",
+        "id" => "pbd-submenu1",
         "title" => "Google",
         "href" => "https:www.google.com",
-        "parent" => "owt-blog"
+        "parent" => "pbd-blog"
     );
 
     $wp_admin_bar->add_node($submenu1);
 
     $submenu2 = array(
-        "id" => "owt-submenu2",
+        "id" => "pbd-submenu2",
         "title" => "Youtube",
         "href" => "https:www.youtube.com",
-        "parent" => "owt-blog",
+        "parent" => "pbd-blog",
         "meta" => array(
             "target" => "_blank"
         )
@@ -134,11 +134,12 @@ function owt_custom_bar_menu($wp_admin_bar)
     $wp_admin_bar->add_node($submenu2);
 }
 
-// add_action("admin_bar_menu", "owt_custom_bar_menu", 999);
+// add_action("admin_bar_menu", "pbd_custom_bar_menu", 999);
 
 
-// action hook - admin_notices
-function owt_admin_notice()
+// 6. action hook - admin_notices
+// this action hook is used for showing notices in the admin dashboard
+function pbd_admin_notice()
 {
 ?>
     <div class="notice notice-error is-dismissible">
@@ -147,83 +148,89 @@ function owt_admin_notice()
 <?php
 }
 
-// add_action("admin_notices", "owt_admin_notice");
+// add_action("admin_notices", "pbd_admin_notice");
 
 
-// action hook - add_meta_boxes
-function owt_make_mbx()
+// 7. action hook - add_meta_boxes
+// this action hook is used for adding custom meta boxes, when you edit a post then at the right side you can see meta boxes
+function pbd_make_mbx()
 {
 
     add_meta_box(
-        'owt-mbx',
-        'OWT Custom Box',
-        'owt_mbx_fn',
+        'pbd-mbx',
+        'PBD Custom Box',
+        'pbd_mbx_fn',
         'post',
         'side',
         'high'
     );
 }
 
-function owt_mbx_fn($post)
+function pbd_mbx_fn($post)
 {
     echo "This is a custom meta box";
 ?>
     <div>
         <label>Name</label>
-        <input type="text" value="<?php echo get_post_meta($post->ID, "owt_mx_value", true); ?>" name="owt_mbx_name" placeholder="Enter Name">
+        <input type="text" value="<?php echo get_post_meta($post->ID, "pbd_mx_value", true); ?>" name="pbd_mbx_name" placeholder="Enter Name">
     </div>
 <?php
 }
 
-// add_action("add_meta_boxes", "owt_make_mbx");
+// add_action("add_meta_boxes", "pbd_make_mbx");
 
 
-// action hook - save_post  this hook is working with the above hook add_meta_boxes because it saves the data from that meta box input field
-// add_action("save_post", "owt_save_mbx_value");
+// 8. action hook - save_post
+// this hook is working with the above hook add_meta_boxes because it saves the data from that meta box input field
+// add_action("save_post", "pbd_save_mbx_value");
 
-function owt_save_mbx_value($post_id)
+function pbd_save_mbx_value($post_id)
 {
 
-    $owt_mbx_name = isset($_REQUEST['owt_mbx_name']) ? trim($_REQUEST['owt_mbx_name']) : "";
+    $pbd_mbx_name = isset($_REQUEST['pbd_mbx_name']) ? trim($_REQUEST['pbd_mbx_name']) : "";
 
-    if (!empty($owt_mbx_name)) {
+    if (!empty($pbd_mbx_name)) {
 
-        update_post_meta($post_id, "owt_mx_value", $owt_mbx_name);
+        update_post_meta($post_id, "pbd_mx_value", $pbd_mbx_name);
     }
 }
 
 
-// action hook - login_enqueue_scripts
-function owt_attach_assets_to_login_page()
+// 9. action hook - login_enqueue_scripts
+// this action hook is used for loading css and js on the login page
+function pbd_attach_assets_to_login_page()
 {
     // functions for adding css and js files
-    wp_enqueue_style("owt-css1", plugin_dir_url(__FILE__) . "assets/css/owt-login.css");
-    wp_enqueue_script("owt-js1", plugin_dir_url(__FILE__) . "assets/js/owt-login.js");
+    wp_enqueue_style("pbd-css1", plugin_dir_url(__FILE__) . "assets/css/pbd-login.css");
+    wp_enqueue_script("pbd-js1", plugin_dir_url(__FILE__) . "assets/js/pbd-login.js");
 }
 
-// add_action("login_enqueue_scripts", "owt_attach_assets_to_login_page");
+// add_action("login_enqueue_scripts", "pbd_attach_assets_to_login_page");
 
 
-// action hook - wp_head & wp_footer
-function owt_head_file_css()
+// 10. action hook - wp_head & wp_footer
+// this action hook is used for adding files inside the head tag
+function pbd_head_file_css()
 {
 
-    echo '<link rel="stylesheet" href="' . plugin_dir_url(__FILE__) . 'assets/css/header_owt.css" />';
+    echo '<link rel="stylesheet" href="' . plugin_dir_url(__FILE__) . 'assets/css/header_pbd.css" />';
 }
 
-// add_action("wp_head", "owt_head_file_css");
+// add_action("wp_head", "pbd_head_file_css");
 
-function owt_footer_file_js()
+// this action hook is used for adding files inside the footer
+function pbd_footer_file_js()
 {
 
-    echo '<script src="' . plugin_dir_url(__FILE__) . 'assets/js/footer_owt.js"></script>';
+    echo '<script src="' . plugin_dir_url(__FILE__) . 'assets/js/footer_pbd.js"></script>';
 }
 
-// add_action("wp_footer", "owt_footer_file_js");
+// add_action("wp_footer", "pbd_footer_file_js");
 
 
-// action hook - login_form
-function owt_login_input_form()
+// 11. action hook - login_form
+// this action hook is used for adding custom input fields to the login page form
+function pbd_login_input_form()
 {
     $txtname = isset($_POST['txtName']) ? $_POST['txtName'] : "";
     $txtphone = isset($_POST['txtPhone']) ? $_POST['txtPhone'] : "";
@@ -239,11 +246,12 @@ function owt_login_input_form()
 <?php
 }
 
-// add_action("login_form", "owt_login_input_form");
+// add_action("login_form", "pbd_login_input_form");
 
 
-// action hook - login_head  -- this hook is working with the above hook
-function owt_extra_fields_error_messages()
+// 12. action hook - login_head  -- this hook is working with the above hook
+// this action hooks runs before the login form processed completely
+function pbd_extra_fields_error_messages()
 {
 
     global $error;
@@ -257,85 +265,89 @@ function owt_extra_fields_error_messages()
     }
 }
 
-// add_action("login_head", "owt_extra_fields_error_messages");
+// add_action("login_head", "pbd_extra_fields_error_messages");
 
 
-// action hook - wp_login -- this hook also works with the above 2 hooks
-function owt_fetch_all_login_data()
+// 13. action hook - wp_login -- this hook also works with the above 2 hooks
+// this action hooks run when used logged in successfully
+function pbd_fetch_all_login_data()
 {
 
     print_r($_REQUEST);
     die;
 }
 
-// add_action("wp_login", "owt_fetch_all_login_data");
+// add_action("wp_login", "pbd_fetch_all_login_data");
 
 
-// filter hooks - the_title
-function owt_filter_title($title)
+// 14. filter hooks - the_title
+// this filter hook is used for the title before showing, now updating the title on all pages
+function pbd_filter_title($title)
 {
 
-    return "owt-updated-" . $title;
+    return "pbd-updated-" . $title;
 }
 
-// add_filter("the_title", "owt_filter_title");
+// add_filter("the_title", "pbd_filter_title");
 
 
-// filter hook - the_content
-function owt_filter_content($content)
+// 15. filter hook - the_content
+function pbd_filter_content($content)
 {
 
     return "The content is - " . $content . " here it ends.";
 }
 
-// add_filter("the_content", "owt_filter_content");
+// add_filter("the_content", "pbd_filter_content");
 
 
-// filter hook - login_headerurl, login_headertitle, login_url
-function owt_update_login_logo_url($url)
+// 16. filter hook - login_headerurl, login_headertitle, login_url
+// these filter hooks are used for updating the logo url and the title text and change the login page url
+function pbd_update_login_logo_url($url)
 {
     return "https://www.google.com";
 }
 
-// add_filter("login_headerurl", "owt_update_login_logo_url");
+// add_filter("login_headerurl", "pbd_update_login_logo_url");
 
 
-function owt_update_login_logo_title()
+function pbd_update_login_logo_title()
 {
     return "Master Custom Themes";
 }
 
-// add_filter("login_headertitle", "owt_update_login_logo_title");
+// add_filter("login_headertitle", "pbd_update_login_logo_title");
 
 
-function owt_update_login_url($login_url, $redirect)
+function pbd_update_login_url($login_url, $redirect)
 {
 
     return home_url("/custom-login-page/?redirect_to=" . $redirect);
 }
 
-// add_filter("login_url", "owt_update_login_url", 10, 2);
+// add_filter("login_url", "pbd_update_login_url", 10, 2);
 
 // echo wp_login_url(); // used to return the wp login page url
 
 
-// filter hook - logout_url & lostpassword_url
-function owt_update_logout_url($logout_url, $redirect)
+// 17. filter hook - logout_url & lostpassword_url
+// these filter hooks are used for modifying the urls of logout and lostpassword
+function pbd_update_logout_url($logout_url, $redirect)
 {
     return home_url("/custom-logout-page/?redirect_to=" . $redirect);
 }
 
-// add_filter("logout_url", "owt_update_logout_url", 10, 2);
+// add_filter("logout_url", "pbd_update_logout_url", 10, 2);
 
-function owt_update_lost_url($lostpassword_url, $redirect)
+function pbd_update_lost_url($lostpassword_url, $redirect)
 {
 
     return home_url("/custom-lostpassword_url/?redirect_to=" . $redirect);
 }
 
-// add_filter("lostpassword_url", "owt_update_lost_url", 10, 2);
+// add_filter("lostpassword_url", "pbd_update_lost_url", 10, 2);
 
-function owt_get_links()
+function pbd_get_links()
 {
 
     echo '<a href="' . wp_logout_url(get_permalink()) . '">Logout URL</a>';
@@ -346,10 +358,10 @@ function owt_get_links()
 // wp_logout_url this function is used to return the logout url
 
 // this action hook is also working with the above 2 filter hooks 
-// add_action("init", "owt_get_links");
+// add_action("init", "pbd_get_links");
 
 
-// filter hook - manage_{post_type}_posts_columns
+// 18. filter hook - manage_{post_type}_posts_columns
 function codex_custom_init()
 {
     $args = array(
