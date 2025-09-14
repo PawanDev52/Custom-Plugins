@@ -362,6 +362,7 @@ function pbd_get_links()
 
 
 // 18. filter hook - manage_{post_type}_posts_columns
+// first we have created a custom post type then with the filter hook we have made custom columns for custom post types
 function codex_custom_init()
 {
     $args = array(
@@ -374,7 +375,7 @@ function codex_custom_init()
 // add_action('init', 'codex_custom_init');
 // in the above action hook we have created a custom post type
 
-function owt_add_custom_clmns_book($columns)
+function pbd_add_custom_clmns_book($columns)
 {
 
     // add custom columns to book custom post type
@@ -391,23 +392,24 @@ function owt_add_custom_clmns_book($columns)
     return $columns;
 }
 // syntax - add_filter("manage_{post_type}_posts_columns", "callback");
-// add_filter("manage_book_posts_columns", "owt_add_custom_clmns_book");
+// add_filter("manage_book_posts_columns", "pbd_add_custom_clmns_book");
 
 // action hook - manage_{post_type}_posts_custom_column
-function owt_cpt_book_data($column_name, $post_id)
+// adding values to the custom post type fields
+function pbd_cpt_book_data($column_name, $post_id)
 {
 
     // supply data for custom post type book
     switch ($column_name) {
-            // case 'cb':
-            //     echo '<input type="checkbox" name="book_row[]" />';
-            //     break;
-            // case 'title':
-            //     echo 'Sample Title';
-            //     break;
-            // case 'author':
-            //     echo 'Master Custom';
-            //     break;
+        // case 'cb':
+        //     echo '<input type="checkbox" name="book_row[]" />';
+        //     break;
+        // case 'title':
+        //     echo 'Sample Title';
+        //     break;
+        // case 'author':
+        //     echo 'Master Custom';
+        //     break;
         case 'amount':
             echo 40;
             break;
@@ -423,11 +425,12 @@ function owt_cpt_book_data($column_name, $post_id)
 }
 // this action hook is working with the above filter hook
 // syntax - add_action("manage_{post_type}_posts_custom_column", "callback", priority, arguments);
-// add_action("manage_book_posts_custom_column", "owt_cpt_book_data", 10, 2);
+// add_action("manage_book_posts_custom_column", "pbd_cpt_book_data", 10, 2);
 
 
-// filter hook - "plugin_action_links_" . plugin_basename(__FILE__)
-function owt_add_other_plugin_links($links)
+// 19. filter hook - "plugin_action_links_" . plugin_basename(__FILE__)
+// ṭhis hook is used for adding action links like edit, activate, delete, setting in your plugin in the installed plugins
+function pbd_add_other_plugin_links($links)
 {
 
     // $list_table_plugin_url = admin_url("options-writing.php#classic-editor-options"); // i have added my own url here
@@ -445,9 +448,9 @@ function owt_add_other_plugin_links($links)
     return $links;
 }
 
-// add_filter("plugin_action_links_" . OWT_HOOK_PLUGIN_BASENAME, "owt_add_other_plugin_links");
+// add_filter("plugin_action_links_" . PBD_HOOK_PLUGIN_BASENAME, "pbd_add_other_plugin_links");
 
-function owt_register_settings_panel()
+function pbd_register_settings_panel()
 {
 
     add_submenu_page(
@@ -456,20 +459,22 @@ function owt_register_settings_panel()
         "Hook Settings",
         "manage_options",
         "hook-settings-panel",
-        "owt_hook_settings_panel_fn"
+        "pbd_hook_settings_panel_fn"
     );
 }
 // adding sub menu in the settings
-// add_action("admin_menu", "owt_register_settings_panel");
+// adding custom setting page for the plugin in the settings tab
+// add_action("admin_menu", "pbd_register_settings_panel");
 
-function owt_hook_settings_panel_fn()
+function pbd_hook_settings_panel_fn()
 {
-    echo "<h1>This is settings page of OWT hook plugin</h1>";
+    echo "<h1>This is settings page of PBD hook plugin</h1>";
 }
 
 
-// filter hook - template_include
-function owt_include_portfolio_page($template)
+// 20. filter hook - template_include
+// this filter hook is used for overriding default page templates
+function pbd_include_portfolio_page($template)
 {
 
     if (is_page("portfolio")) {
@@ -489,8 +494,7 @@ function owt_include_portfolio_page($template)
     }
 }
 
-// it works with locate_template()
-// add_filter("template_include", "owt_include_portfolio_page", 99);
+// add_filter("template_include", "pbd_include_portfolio_page", 99);
 
 */
 ?>
