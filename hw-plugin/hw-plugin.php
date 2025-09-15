@@ -13,6 +13,8 @@
 
 //  Admin Dashboard Notices
 // i am commenting this entire code because i am pushing it on github so when clonning it uncomment the code.
+
+// showing notice and widgets in the admin dashboard
 /*
 add_action("admin_notices", "hw_show_warning_message");
 
