@@ -35,8 +35,6 @@ function hw_show_warning_message(){
 }
 
 // Admin Dashboard Widgets
-add_action("wp_dashboard_setup", "hw_dashboard_widget");
-
 function hw_dashboard_widget(){
     wp_add_dashboard_widget("hw_hellow_world", "HW - Hello World Widget", "hw_custom_admin_widget");
 }
@@ -44,6 +42,8 @@ function hw_dashboard_widget(){
 function hw_custom_admin_widget(){
     echo "This is a custom widget of hello world plugin.";
 }
+
+add_action("wp_dashboard_setup", "hw_dashboard_widget");
 */
 
 ?>
