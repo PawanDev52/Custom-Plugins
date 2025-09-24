@@ -2,7 +2,7 @@
 
 /**
  * Plugin Name: Shortcode Plugin
- * Description: This is a plugin for giving us idea about shortcode basics
+ * Description: This is a plugin for creating shortcodes
  * Version: 1.0
  * Author: Pawan Sharma
  * Plugin URI: https://example.com/shortcode-plugin
