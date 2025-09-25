@@ -2,11 +2,11 @@
 
 /**
  * Plugin Name: Shortcode Plugin
- * Description: This is a plugin for creating shortcodes
- * Version: 1.0
+ * Description: This is a plugin for creating shortcode
  * Author: Pawan Sharma
- * Plugin URI: https://example.com/shortcode-plugin
- * Author URI: https://example.com/me
+ * Version: 1.0
+ * Author URI: https://github.com/PawanDev52
+ * Plugin URI: https://github.com/PawanDev52/Custom-Plugins
  */
 
 /*
