@@ -12,26 +12,27 @@
 /*
 commenting all the code as i am pushing it on github
 
-//  Basic shortcode
-add_shortcode("message", "sp_show_static_message");
+// ShortCode with static data
+add_shortcode("message", "sc_static_message"); // shortcode - [message]
 
-function sp_show_static_message()
+function sc_static_message()
 {
-    return "<p style='color:orange;font-size:28px;font-weight:700;text-align:center;'>Hello i am a simple short code message</p>"; // we have to use return here can't use echo here
+    return "<h4 style='color:orange; font-size:20px;'>Hello this is a static message using shortcode</h4>";
 }
 
+// ShortCode with parameters
+// [student name="peter" email="peter@test.com"]
 
-// shortcode with parameters
-add_shortcode("student", "sp_handle_student");
+add_shortcode("student", "sc_student_parameter");
 
-function sp_handle_student($attributes)
+function sc_student_parameter($attributes)
 {
     $attributes = shortcode_atts(array(
-        "name" => "Default Student",
-        "email" => "Default Email"
+        "name" => "dummy name",
+        "email" => "dummy email"
     ), $attributes, "student");
 
-    return "<h3 style='color:blue;'>Student Data: Name - " . $attributes['name'] . ", Email - " . $attributes['email'] . "</h3>";
+    return "<p style='color:blue;'><b>Student Data: </b> Name - " . $attributes['name'] . " , Email - " . $attributes['email'] . "</p>";
 }
 
 // shortcode with db operations
