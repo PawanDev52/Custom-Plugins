@@ -35,36 +35,28 @@ function sc_student_parameter($attributes)
     return "<p style='color:blue;'><b>Student Data: </b> Name - " . $attributes['name'] . " , Email - " . $attributes['email'] . "</p>";
 }
 
-// shortcode with db operations
-add_shortcode("list-posts", "sp_handle_list_posts_wp_query_class");
+// Shortcode with DB Operations
+add_shortcode("list-posts", "sc_db_list_posts");
 
-function sp_handle_list_posts()
+function sc_db_list_posts()
 {
-    global $wpdb; // this is a global database object
+    global $wpdb;
 
-    $table_prefix = $wpdb->prefix; // wp_
-    $table_name = $table_prefix . "posts"; // wp_posts
-    // $table_name = "wp_posts";
-
-    // get post where post_type = post and post_status = publish
+    $table_name = $wpdb->prefix . "posts";
 
     $posts = $wpdb->get_results(
-        "select post_title from {$table_name} where post_type='post' AND post_status='publish'"
+        "SELECT post_title from {$table_name} WHERE post_type = 'post' AND post_status = 'publish'"
     );
 
     if (count($posts) > 0) {
-        $outerHtml = "<ul>";
-
+        $tb_list = "<ul>";
         foreach ($posts as $post) {
-            $outerHtml .= "<li>" . $post->post_title . "</li>";
+            $tb_list .= '<li>' . $post->post_title . '</li>';
         }
+        $tb_list .= "</ul>";
 
-        $outerHtml .= "</ul>";
-
-        return $outerHtml;
+        return $tb_list;
     }
-
-    return "No post found";
 }
 
 function sp_handle_list_posts_wp_query_class($attributes)
