@@ -36,7 +36,7 @@ function sc_student_parameter($attributes)
 }
 
 // Shortcode with DB Operations
-add_shortcode("list-posts", "sc_db_list_posts");
+// add_shortcode("list-posts", "sc_db_list_posts");
 
 function sc_db_list_posts()
 {
@@ -49,20 +49,26 @@ function sc_db_list_posts()
     );
 
     if (count($posts) > 0) {
-        $tb_list = "<ul>";
-        foreach ($posts as $post) {
-            $tb_list .= '<li>' . $post->post_title . '</li>';
-        }
-        $tb_list .= "</ul>";
+        $sc_data = '<ul style="color: blue;">';
 
-        return $tb_list;
+        foreach ($posts as $post) {
+            $sc_data .=  "<li>{$post->post_title}</li>";
+        }
+
+        $sc_data .= '</ul>';
+
+        return $sc_data;
     }
+
+    return "<h4 style='color:red;'>No post found!</h4>";
 }
 
-function sp_handle_list_posts_wp_query_class($attributes)
+// Shortcode with wp_query
+add_shortcode("list-posts", "sc_handle_list_posts_wp_query");
+function sc_handle_list_posts_wp_query($attributes)
 {
     $attributes = shortcode_atts(array(
-        "number" => 5
+        "number" => 4
     ), $attributes, "list-posts");
 
     $query = new WP_Query(array(
@@ -71,18 +77,20 @@ function sp_handle_list_posts_wp_query_class($attributes)
     ));
 
     if ($query->have_posts()) {
+        $outputHtml = '<ul style="color:blue;">';
 
-        $outerHtml = '<ul>';
         while ($query->have_posts()) {
             $query->the_post();
-            $outerHtml .= '<li class="my_class"><a href="' . get_the_permalink() . '">' . get_the_title() . '</a></li>';
+            $outputHtml .= "<li><a href=' " . get_the_permalink() . "'>" . get_the_title() . "</a></li>";
         }
-        $outerHtml .= '</ul>';
 
-        return $outerHtml;
+        $outputHtml .= '</ul>';
+
+        return $outputHtml;
     }
 
-    return "No post found";
+    return "<h4 style='color:red;'>No post found</h4>";
 }
+    
 */
 ?>
