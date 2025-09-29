@@ -4,8 +4,9 @@
  * Plugin Name: CSV Data Uploader
  * Description: This plugin will upload CSV data to DB table
  * Author: Pawan Sharma
- * Plugin URI: https://example.com/csv-data-uploader
- * Author URI: https://example.com
+ * Version: 1.0
+ * Author URI: https://github.com/PawanDev52
+ * Plugin URI: https://github.com/PawanDev52/Custom-Plugins
  */
 
 //  define('CDU_PLUGIN_DIR_PATH', plugin_dir_path(__FILE__)); // define is used to define a constant
