@@ -2,7 +2,7 @@
 
 /**
  * Plugin Name: CSV Data Uploader
- * Description: This plugin will upload CSV data to DB table
+ * Description: This plugin is for uploading CSV data to DB table
  * Author: Pawan Sharma
  * Version: 1.0
  * Author URI: https://github.com/PawanDev52
