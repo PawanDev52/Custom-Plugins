@@ -9,6 +9,7 @@
  * Plugin URI: https://github.com/PawanDev52/Custom-Plugins
  */
 
+
 //  define('CDU_PLUGIN_DIR_PATH', plugin_dir_path(__FILE__)); // define is used to define a constant
 
 //  add_shortcode("csv-data-uploader", "cdu_display_uploader_form");
@@ -28,7 +29,7 @@
 //      return $template;
 //  }
 
-// DB Table on Plugin Activation
+// DB Table creation on Plugin Activation
 // register_activation_hook(__FILE__, "cdu_create_table");
 
 // function cdu_create_table(){
@@ -50,6 +51,5 @@
 // ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci
 //     ";
 // }
-
 
 ?>
