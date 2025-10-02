@@ -2,32 +2,30 @@
 
 /**
  * Plugin Name: CSV Data Uploader
- * Description: This plugin is for uploading CSV data to DB table
+ * Description: This is a plugin which upload CSV data to DB table
  * Author: Pawan Sharma
  * Version: 1.0
  * Author URI: https://github.com/PawanDev52
  * Plugin URI: https://github.com/PawanDev52/Custom-Plugins
  */
 
+// define("CDU_PLUGIN_DIR_PATH", plugin_dir_path(__FILE__));
 
-//  define('CDU_PLUGIN_DIR_PATH', plugin_dir_path(__FILE__)); // define is used to define a constant
+// add_shortcode( "csv-data-uploader", "csv_uploader_form");
 
-//  add_shortcode("csv-data-uploader", "cdu_display_uploader_form");
- 
-//  function cdu_display_uploader_form(){
-//      // start PHP buffer
-//      ob_start();
- 
-//      include_once CDU_PLUGIN_DIR_PATH . "/template/cdu_form.php"; // Put all contents into buffer
- 
-//      // read buffer
-//      $template = ob_get_contents();
- 
-//      // clean buffer
-//      ob_end_clean();
- 
-//      return $template;
-//  }
+// function csv_uploader_form(){
+//     // start php buffer
+//     ob_start();
+//     include_once CDU_PLUGIN_DIR_PATH . "./template/cdu_form.php";  // put all content into buffer
+
+//     // read buffer
+//     $template = ob_get_contents();
+    
+//     // clearn buffer
+//     ob_end_clean();
+
+//     return $template;
+// }
 
 // DB Table creation on Plugin Activation
 // register_activation_hook(__FILE__, "cdu_create_table");
