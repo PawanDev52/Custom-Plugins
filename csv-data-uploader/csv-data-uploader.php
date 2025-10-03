@@ -11,17 +11,18 @@
 
 // define("CDU_PLUGIN_DIR_PATH", plugin_dir_path(__FILE__));
 
-// add_shortcode( "csv-data-uploader", "csv_uploader_form");
+// add_shortcode("csv-data-uploader", "csv_uploader_form");
 
-// function csv_uploader_form(){
-//     // start php buffer
+// function csv_uploader_form()
+// {
+//     // start buffer
 //     ob_start();
-//     include_once CDU_PLUGIN_DIR_PATH . "./template/cdu_form.php";  // put all content into buffer
+//     include_once CDU_PLUGIN_DIR_PATH . "./template/cdu_form.php";
 
-//     // read buffer
+//     // get buffer content
 //     $template = ob_get_contents();
-    
-//     // clearn buffer
+
+//     // end buffer
 //     ob_end_clean();
 
 //     return $template;
