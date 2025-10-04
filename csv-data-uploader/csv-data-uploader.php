@@ -28,14 +28,15 @@
 //     return $template;
 // }
 
-// DB Table creation on Plugin Activation
+// DB table creation on plugin activation
 // register_activation_hook(__FILE__, "cdu_create_table");
 
-// function cdu_create_table(){
+// function cdu_create_table()
+// {
 //     global $wpdb;
 //     $table_prefix = $wpdb->prefix;
 //     $table_name = $table_prefix . "students_data";
-
+// }
 //     $table_collate = $wpdb->get_charset_collate();
 
 //     $sql_command = "
