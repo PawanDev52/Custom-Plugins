@@ -28,7 +28,7 @@
 //     return $template;
 // }
 
-// DB table creation on plugin activation
+// Database table creation on plugin activation
 // register_activation_hook(__FILE__, "cdu_create_table");
 
 // function cdu_create_table()
@@ -53,5 +53,6 @@
 
 //     require_once(ABSPATH . "/wp-admin/includes/upgrade.php");
 // }
+
 
 ?>
