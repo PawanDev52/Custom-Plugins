@@ -53,8 +53,15 @@
 
 //     require_once(ABSPATH . "/wp-admin/includes/upgrade.php");
 
-//       dbDelta($sql_command); 
+//     dbDelta($sql_command);
 // }
 
+// add script file
+// add_action("wp_enqueue_scripts", "cdu_script_file");
+
+// function cdu_script_file()
+// {
+//     wp_enqueue_script("cdu-script-js", plugin_dir_url(__FILE__) . "assets/script.js", array("jquery"));
+// }
 
 ?>
