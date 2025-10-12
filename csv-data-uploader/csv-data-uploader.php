@@ -62,6 +62,9 @@
 // function cdu_script_file()
 // {
 //     wp_enqueue_script("cdu-script-js", plugin_dir_url(__FILE__) . "assets/script.js", array("jquery"));
+//     wp_localize_script("cdu-script-js", "cdu_object", array(
+//         "ajax_url" => admin_url("admin-ajax.php")
+//     ));
 // }
 
 ?>
