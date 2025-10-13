@@ -9,9 +9,16 @@ jQuery(document).ready(function () {
       data: formData,
       datatype: "json",
       method: "POST",
-      processData,
-      contentType,
-      success: function () {},
+      processData: false,
+      contentType: false,
+      success: function (response) {
+        // console.log(response);
+        if (response.status) {
+          jQuery("#show_uploader_message").text(response.message).css({
+            color: "green",
+          });
+        }
+      },
     });
   });
 });

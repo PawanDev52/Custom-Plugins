@@ -67,4 +67,56 @@
 //     ));
 // }
 
+// Capture Ajax Request
+// add_action("wp_ajax_cdu_submit_form_data", "cdu_ajax_handler");  // when user is logged in
+// add_action("wp_ajax_nopriv_cdu_submit_form_data", "cdu_ajax_handler");  // when user is logged out
+
+// function cdu_ajax_handler()
+// {
+//     if ($_FILES['csv_data_file']) {
+//         $csvFile = $_FILES['csv-data-file']['tmp_name'];
+
+//         $handle = fopen($csvFile, "r");
+
+//         global $wpdb;
+//         $table_name = $wpdb->prefix . "students_data";
+
+//         if ($handle) {
+
+//             $row = 0;
+//             while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
+
+//                 if ($row == 0) {
+//                     $row++;
+//                     continue;
+//                 }
+
+//                 // Insert data into table
+//                 $wpdb->insert($table_name, array(
+//                     "name" => $data[1],
+//                     "email" => $data[2],
+//                     "age" => $data[3],
+//                     "phone" => $data[4],
+//                     "photo" => $data[5],
+//                 ));
+//             }
+
+//             fclose($handle);
+
+//             echo json_encode([
+//                 "status" => 1,
+//                 "message" => "Data uploader successfully!"
+//             ]);
+//         }
+//     } else {
+//         echo json_encode(array(
+//             "status" => 1,
+//             "message" => "Hello csv data uploader"
+//         ));
+//     }
+
+
+//     exit;
+// }
+
 ?>
