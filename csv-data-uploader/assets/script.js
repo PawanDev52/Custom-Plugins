@@ -17,6 +17,7 @@ jQuery(document).ready(function () {
           jQuery("#show_uploader_message").text(response.message).css({
             color: "green",
           });
+          jQuery("#frm-csv-upload")[0].reset();
         }
       },
     });
