@@ -9,4 +9,9 @@
  * Plugin URI: https://github.com/PawanDev52/Custom-Plugins
  */
 
+// for downloading db data
+function db_data_csv(){
+    
+}
+
 ?>
