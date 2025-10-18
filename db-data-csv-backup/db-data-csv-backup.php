@@ -9,9 +9,12 @@
  * Plugin URI: https://github.com/PawanDev52/Custom-Plugins
  */
 
-// for downloading db data
-function db_data_csv(){
-    
-}
+
+// add_action("admin_menu", "tdcb_create_admin_menu");
+
+// function tdcb_create_admin_menu()
+// {
+//     add_menu_page("CSV Data Backup Plugin", "CSV Data Backup", "manage_options", "csv-data-backup", "tdcb_export_form", "dashicons-database-export", 8);
+// }
 
 ?>
