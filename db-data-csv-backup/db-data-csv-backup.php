@@ -9,7 +9,7 @@
  * Plugin URI: https://github.com/PawanDev52/Custom-Plugins
  */
 
-
+// creating menu in dashboard
 // add_action("admin_menu", "tdcb_create_admin_menu");
 
 // function tdcb_create_admin_menu()
