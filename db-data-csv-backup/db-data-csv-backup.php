@@ -18,7 +18,7 @@
 // }
 
 // function tdcb_export_form() {
-//     echo "<h3>CSV Data Backup Plugin</h3>";
+//   echo "<h3>DB Data CSV Backup Plugin</h3>";
 // }
 
 ?>
