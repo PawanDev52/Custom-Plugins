@@ -17,8 +17,8 @@
 //  add_menu_page("CSV Data Backup Plugin", "CSV Data Backup", "manage_options", "csv-data-backup", "tdcb_export_form", "dashicons-database-export", 8);
 // }
 
-// function tdcb_export_form() {
-//   echo "<h3>DB Data CSV Backup Plugin</h3>";
-// }
+function tdcb_export_form() {
+  echo "<h3>DB Table Data CSV Backup Plugin</h3>";
+}
 
 ?>
